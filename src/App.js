@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 
 const Menu = () => <span>To jest menu, tego nie pomalujesz</span>;
 
-const Header = () => (
+const Header = ({title}) => (
   <div>
-    <h1>Taki tam tytuł</h1>
+    <h1>{title}</h1>
     <Menu />
   </div>
 );
+
+const MemoHeader = memo(Header)
 
 const TodoList = ({ data }) => (
   <ul>
@@ -19,7 +21,7 @@ const TodoList = ({ data }) => (
 
 const TodoListWithHeader = ({ data }) => (
   <div>
-    <Header />
+    <MemoHeader title="Taki tam tytuł"/>
     <TodoList data={data} />
   </div>
 );
