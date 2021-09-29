@@ -17,14 +17,7 @@ const TodoList = ({ data }) => (
   </ul>
 );
 
-const TodoListWithHeader = ({ data }) => (
-  <div>
-    <Header />
-    <TodoList data={data} />
-  </div>
-);
-
-const App = () => {
+const TodoListContainer = () => {
   const [data, setData] = useState([1]);
   const interval = 1000;
 
@@ -37,9 +30,21 @@ const App = () => {
     return () => clearInterval(handle);
   }, []);
 
+  return <TodoList data={data}/>
+}
+
+
+const TodoListWithHeader = () => (
+  <div>
+    <Header />
+    <TodoListContainer/>
+  </div>
+);
+
+const App = () => {
   return (
     <div>
-      <TodoListWithHeader data={data} />
+      <TodoListWithHeader/>
     </div>
   );
 };
